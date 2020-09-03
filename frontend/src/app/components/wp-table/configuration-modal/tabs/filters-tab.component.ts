@@ -28,14 +28,17 @@ export class WpTableConfigurationFiltersTab implements TabComponent {
               readonly I18n:I18nService,
               readonly wpTableFilters:WorkPackageViewFiltersService,
               readonly wpFiltersService:WorkPackageFiltersService,
-              readonly bannerService:BannersService) {
-  }
+              readonly bannerService:BannersService)
 
   ngOnInit() {
     this.eeShowBanners = this.bannerService.eeShowBanners;
     this.wpTableFilters
       .onReady()
       .then(() => this.filters = this.wpTableFilters.current);
+
+    this.wpTableFilters.changes$().subscribe(filters => {
+      this.filters = this.wpTableFilters.current;
+    });
   }
 
   public onSave() {
