@@ -28,7 +28,8 @@ export class WpTableConfigurationFiltersTab implements TabComponent {
               readonly I18n:I18nService,
               readonly wpTableFilters:WorkPackageViewFiltersService,
               readonly wpFiltersService:WorkPackageFiltersService,
-              readonly bannerService:BannersService)
+              readonly bannerService:BannersService) {
+  }
 
   ngOnInit() {
     this.eeShowBanners = this.bannerService.eeShowBanners;
